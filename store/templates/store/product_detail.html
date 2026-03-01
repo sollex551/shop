@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+
+
+{% block title %}
+{{ title }}
+{% endblock title %}
+
+
+{% block poster %}
+
+{% endblock poster %}
+
+
+{% block main %}
+<main>
+    <section class="product_detail">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+
+                    {% include 'store/components/_product_slider.html' %}
+
+                </div>
+                <div class="col-md-6">
+                    {% include 'store/components/_product_detail-info.html' %}
+
+
+                    <p class="product_detail-guarantee" style="margin-bottom: 60px;">30 days return, free shipping</p>
+                    {% if product.quantity > 0 %}
+                    <a href="" class="product_detail-buy_btn">ADD TO CART</a>
+                    {% else %}
+                    <a href="" class="product_detail-buy_btn">Нет в наличии</a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {% include 'store/components/_brand_info.html' %}
+
+
+    {% include 'store/components/_reviews.html' %}
+
+    <!-- Кнопка-триггер модального окна -->
+    <div class="container text-center mb-4">
+    <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        Оставить Отзыв
+    </button>
+
+    <!-- Модальное окно -->
+    {% include 'store/components/_modal.html' %}
+    </div>
+
+
+    <div class="recommended_goods">
+        <h2 class="product_detail-main-title text-center">You may also like</h2>
+
+        <!-- PRODUCTS BLOCK START -->
+        <div class="container">
+            <div class="row">
+                {% for product in products %}
+                {% include 'store/components/_product_card.html' %}
+                {% endfor %}
+            </div>
+        </div>
+        <!-- PRODUCTS BLOCK END -->
+
+    </div>
+
+
+    <!-- BLOCK EMAIL FORM START -->
+    {% include 'store/components/_email_form.html' %}
+    <!-- BLOCK EMAIL FORM END -->
+</main>
+{% endblock main %}
+
+
+
+
+
+
+
+
